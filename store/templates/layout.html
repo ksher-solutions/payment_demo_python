@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../static/main.css">
+  </head>
+  <body>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <p>
+      <strong>Navigation:</strong>
+      <a href="/">Store</a>
+      <a href="/checkout">Checkout</a>
+    </p>
+    {% block content %}{% endblock %}
+  </body>
+</html>
