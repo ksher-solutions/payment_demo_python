@@ -4,10 +4,10 @@
 
 {% if complete == 'success' %}
 <h1> Payment Done Successfully</h1>
-<p> Order ID: {order_id} payment has been done Successfully/p>
+<p> Order ID: {{order_id}} payment has been done Successfully/p>
 {% else %}
 <h1> Payment Done with Error</h1>
-<p> Order ID: {order_id} haven't been paid </p>
+<p> Order ID: {{order_id}} haven't been paid </p>
 {% endif %}
 
 <p>Return to <a href="{{ url_for('store.index') }}">store</a>.</p>
