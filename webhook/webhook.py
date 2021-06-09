@@ -8,6 +8,6 @@ webhook = Blueprint("webhook", __name__)
 def order():
     data = request.json
     current_app.logger.info("================= WEBHOOK =================")
-    current_app.logger("raw resp data:{}".format(data))
+    current_app.logger.info("raw resp data:{}".format(data))
     current_app.logger.info("================= END WEBHOOK =================")
     return json.dumps({"success": True})
