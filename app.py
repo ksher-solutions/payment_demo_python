@@ -6,21 +6,6 @@ from webhook.webhook import webhook
 from flask_talisman import Talisman
 from logging.config import dictConfig
 
-# dictConfig({
-#     'version': 1,
-#     'formatters': {'default': {
-#         'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
-#     }},
-#     'handlers': {'wsgi': {
-#         'class': 'logging.StreamHandler',
-#         'stream': 'ext://flask.logging.wsgi_errors_stream',
-#         'formatter': 'default'
-#     }},
-#     'root': {
-#         'level': 'INFO',
-#         'handlers': ['wsgi']
-#     }
-# })
 
 
 def create_app(config_class=Config):
@@ -31,12 +16,13 @@ def create_app(config_class=Config):
     app.register_blueprint(checkout)
     app.register_blueprint(webhook)
 
-    # Adding Content Security Policy to load all content either locally or from omise.co.
-    # Talisman(
-    #     app,
-    #     content_security_policy={
-    #         "default-src": "'unsafe-inline' 'self' *.amazonaws.com *.omise.co *googleapis.com"
-    #     },
-    # )
+    # Adding Content Security Policy to load all content either locally or from heroku
+    Talisman(
+        app,
+        content_security_policy={
+            "default-src": "'unsafe-inline' 'self' *.amazonaws.com *.herokuapp.com *googleapis.com *.ksher.com"
+        },
+    )
 
     return app
+

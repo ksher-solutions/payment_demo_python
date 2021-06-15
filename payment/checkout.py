@@ -36,13 +36,12 @@ def order(order_id,complete):
 @checkout.route("/checkout")
 def check_out():
     """
-    Simple checkout page that loads Omise.js.
+    Simple checkout page.
     """
 
     cart = Cart()
     return render_template(
         "checkout.html",
-        key=current_app.config.get("OMISE_PUBLIC_KEY"),
         cart=cart,
         Price=Price,
         currency=current_app.config.get("STORE_CURRENCY"),
@@ -54,8 +53,8 @@ def check_out():
 @checkout.route("/charge", methods=["POST"])
 def charge():
     """
-    Create charge based on token or source created by Omise.js on the
-    checkout page.
+    Create an Order based on Checkout page and 
+    redirect using to make a payment on Ksher Payment Gateway
     """
     email = request.form.get("email")
     api_url = current_app.config.get('KSHER_API_BASE')

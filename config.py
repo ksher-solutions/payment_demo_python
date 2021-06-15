@@ -4,10 +4,6 @@ from dotenv import load_dotenv
 
 class Config:
     """Basic Flask configuration.
-
-    In theory, we could get store currency and locale from Omise
-    account currency.  For example, if account currency is THB then
-    locale is th_TH and store currency is THB.
     """
     load_dotenv()
 
