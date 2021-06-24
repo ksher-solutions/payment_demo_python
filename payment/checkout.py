@@ -66,7 +66,7 @@ def charge():
     order_data = {
         'amount': cart.total(), # ksher need cent unit
         'merchant_order_id':order_id,
-        "channel_list": "linepay,airpay,wechat,bbl_promptpay,truemoney,ktbcard",
+        "channel": "linepay,airpay,wechat,bbl_promptpay,truemoney,ktbcard",
         'note': f'customer email:{email}',
         "redirect_url": f"{store_base_url}/orders/{order_id}/success",
         "redirect_url_fail": f"{store_base_url}/orders/{order_id}/fail",
@@ -79,5 +79,6 @@ def charge():
             "error":resp.text
         })
     resp_data = resp.json()
+    print(f"resp_data:{resp_data}")
     redirect_url = resp_data['reference']
     return redirect(redirect_url)
