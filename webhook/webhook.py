@@ -8,7 +8,7 @@ webhook = Blueprint("webhook", __name__)
 def order():
     data = request.json
     args = request.args
-    args_data =request.args.to_dict
+    args_data =request.args.to_dict()
     api_url = current_app.config.get('KSHER_API_BASE')
     api_token = current_app.config.get('KSHER_API_TOKEN')
     myPayment = Payment(api_url,token=api_token)
