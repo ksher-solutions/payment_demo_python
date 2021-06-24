@@ -1,15 +1,35 @@
-# KSHER_PAYMENT_DEMO_PYTHON
+# Website Integration
 
-Here is the demo on how you can intergrate our payment service into your system.
+This source code of this tutorial is hosted at https://github.com/ksher-solutions/payment_demo_python. 
+
+You can try it here https://ksherpay-demo-store.herokuapp.com/
+
+This is a poor man's ecommerce website with only two SKUs but with rich payment options.
+
+### Adding SKU to shopping cart
+
+Click ```add cart``` for adding the related SKU to shopping card. You can add serveral.
+
+### Checkout 
+
+Click ```Checkout``` to call payment gateway API and collect from customer.
+
+### Get the payment result via Webhook
+
+As soon as the transaction is authorized by the payer, the order status change will be sent by webhook.
+
+---
 
 ## Outline
 
-- requirement
-- installation
-- configuration
-- run the demo
-- system overview
-- deployment
+- [Requirement](#requirement)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Run The Demo](#run-the-demo)
+- [system overview](#system-overview)
+- [How The App Make a payment using Ksher Payment Gateway](#how-the-app-make-a-payment-using-ksher-payment-gateway)
+- [How The App Know that the payment has been done](#how-the-app-know-that-the-payment-has-been-done)
+
 
 ---
 
@@ -179,7 +199,7 @@ def charge():
     order_data = {
         'amount': cart.total(), # ksher need cent unit
         'merchant_order_id':order_id,
-        "channel_list": "linepay,airpay,wechat,bbl_promptpay,truemoney,ktbcard",
+        "channel": "linepay,airpay,wechat,bbl_promptpay,truemoney,ktbcard",
         'note': f'customer email:{email}',
         "redirect_url": f"{store_base_url}/orders/{order_id}/success",
         "redirect_url_fail": f"{store_base_url}/orders/{order_id}/fail",
@@ -231,7 +251,7 @@ order_id = myPayment.order.generate_order_id("Demo")
 order_data = {
     'amount': cart.total(), # ksher need cent unit
     'merchant_order_id':order_id,
-    "channel_list": "linepay,airpay,wechat,bbl_promptpay,truemoney,ktbcard",
+    "channel": "linepay,airpay,wechat,bbl_promptpay,truemoney,ktbcard",
     'note': f'customer email:{email}',
     "redirect_url": f"{store_base_url}/orders/{order_id}/success",
     "redirect_url_fail": f"{store_base_url}/orders/{order_id}/fail",
