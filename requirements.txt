@@ -9,6 +9,7 @@ idna==2.10
 importlib-metadata==4.4.0
 itsdangerous==2.0.1
 Jinja2==3.0.1
+ksherpay==0.0.1
 MarkupSafe==2.0.1
 py-money==0.5.0
 python-dotenv==0.17.1
